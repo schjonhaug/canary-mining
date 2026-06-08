@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canary Mining</title>
+    <link rel="stylesheet" href="/canary-design.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="canary-app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand-lockup">
+          <img class="brand-logo" src="/canary-in-a-coalmine.svg" alt="" aria-hidden="true">
+          <div>
+            <h1 id="app-title">Canary Mining</h1>
+            <p id="subtitle">Stratum V2 solo mining server</p>
+          </div>
+        </div>
+        <div class="topbar-controls">
+          <button class="panel-action canary-button top-add-miner" id="top-add-miner" type="button" data-open-add-miner hidden>+ Add Miner</button>
+          <label class="currency-control" for="currency-select">
+            <span>Currency</span>
+            <select id="currency-select" aria-label="Display currency">
+              <option value="USD">USD</option>
+            </select>
+          </label>
+          <div class="status-pill canary-badge canary-badge-success" id="health">loading</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="metrics-grid">
+        <article class="network-card canary-metric-card">
+          <div class="metric-label">
+            <label>Network</label>
+            <button class="help-button canary-tooltip" type="button" aria-label="Network help" data-tooltip="Bitcoin Core network estimate, current difficulty, and the next 2016-block retarget projection for the active chain.">
+              <img src="/icons/circle-help.svg" alt="">
+            </button>
+          </div>
+          <div class="network-summary">
+            <div class="network-summary-item">
+              <span>Hashrate</span>
+              <strong id="network-hashrate">-</strong>
+            </div>
+            <div class="network-summary-item">
+              <span>Difficulty</span>
+              <strong id="network-difficulty">-</strong>
+            </div>
+            <div class="network-summary-item network-summary-item-compact">
+              <span>Chain</span>
+              <strong id="network-name">-</strong>
+            </div>
+          </div>
+          <div class="difficulty-progress" aria-hidden="true">
+            <span id="difficulty-progress-fill"></span>
+          </div>
+          <div class="difficulty-details">
+            <span id="difficulty-next">-</span>
+            <span id="difficulty-eta">-</span>
+            <span id="difficulty-projection">Projection unavailable</span>
+          </div>
+        </article>
+        <article class="chain-work-card canary-panel">
+          <div class="metric-label">
+            <label>Template &amp; Blocks</label>
+            <button class="help-button canary-tooltip" type="button" aria-label="Template and blocks help" data-tooltip="Recent confirmed blocks and the candidate block this server is currently mining. The template is attached to the highlighted mining node.">
+              <img src="/icons/circle-help.svg" alt="">
+            </button>
+          </div>
+          <div class="chain-work-statuses">
+            <div class="card-status canary-status" id="chain-status">Waiting for chain state</div>
+            <div class="card-status canary-status" id="template-status">Waiting for template</div>
+          </div>
+          <div class="chain-work-layout">
+            <div class="chain-stack" id="chain-timeline" aria-label="Current mining template and recent blocks"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="columns">
+        <article class="panel miners-panel canary-panel" id="miner-history-panel" hidden>
+          <div class="panel-title">
+            <div class="metric-label">
+              <h2>Miners</h2>
+              <button class="help-button canary-tooltip" type="button" aria-label="Miners help" data-tooltip="Known miners stay here after disconnecting. Delete a miner when you no longer want it listed.">
+                <img src="/icons/circle-help.svg" alt="">
+              </button>
+            </div>
+          </div>
+          <div class="miner-cards" id="miners"></div>
+        </article>
+
+      </section>
+
+      <section class="monitoring-bottom" hidden>
+        <section class="panel canary-panel" id="monitoring-panel">
+          <div class="panel-title">
+            <h2>SRI Monitoring</h2>
+            <span id="metrics-listener"></span>
+          </div>
+          <pre id="monitoring">{}</pre>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Project links">
+        <a href="https://canarybitcoin.com/donations">
+          <img src="/icons/heart.svg" alt="" aria-hidden="true">
+          <span>Donations</span>
+        </a>
+        <a href="https://github.com/schjonhaug/canary-mining">
+          <img src="/icons/github.svg" alt="" aria-hidden="true">
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </footer>
+
+    <dialog class="miner-setup-dialog canary-dialog" id="add-miner-dialog" aria-labelledby="add-miner-title">
+      <form method="dialog" class="miner-setup-modal canary-dialog-panel">
+        <div class="modal-title canary-dialog-header">
+          <div>
+            <h2 class="canary-dialog-title" id="add-miner-title">Add Miner</h2>
+            <p class="canary-dialog-description">Use these settings in the miner's Stratum V2 configuration.</p>
+          </div>
+          <button class="icon-button canary-icon-button" type="submit" aria-label="Close add miner dialog">&times;</button>
+        </div>
+        <div class="miner-setup-fields">
+          <div class="setup-field">
+            <span>Stratum Host</span>
+            <code id="setup-host">-</code>
+            <button class="copy-button canary-copy-button" type="button" data-copy-target="setup-host" aria-label="Copy Stratum Host" title="Copy">
+              <img src="/icons/copy.svg" alt="">
+            </button>
+            <p>Use the host name or IP address. Some miner firmware asks for the port separately.</p>
+          </div>
+          <div class="setup-field">
+            <span>Stratum Port</span>
+            <code id="setup-port">-</code>
+            <button class="copy-button canary-copy-button" type="button" data-copy-target="setup-port" aria-label="Copy Stratum Port" title="Copy">
+              <img src="/icons/copy.svg" alt="">
+            </button>
+          </div>
+          <div class="setup-field setup-field-generator">
+            <span>Username Generator</span>
+            <label class="setup-input-row">
+              <span>Payout address</span>
+              <input class="canary-input" id="setup-payout-address" type="text" autocomplete="off" spellcheck="false" placeholder="Paste Bitcoin payout address">
+              <div class="setup-validation" id="setup-address-validation"></div>
+            </label>
+            <label class="setup-input-row">
+              <span>Worker label (optional)</span>
+              <input class="canary-input" id="setup-miner-label" type="text" list="setup-miner-labels" autocomplete="off" spellcheck="false" placeholder="Leave empty or type any label">
+              <datalist id="setup-miner-labels">
+                <option value="0"></option>
+                <option value="Miner1"></option>
+                <option value="Rig1"></option>
+                <option value="Gamma1"></option>
+                <option value="Gamma01"></option>
+                <option value="Supra01"></option>
+                <option value="Bitaxe"></option>
+                <option value="Bitaxe-Gamma"></option>
+                <option value="Bitaxe-Supra"></option>
+                <option value="Qaxe"></option>
+                <option value="Qaxe++"></option>
+                <option value="NerdAxe"></option>
+                <option value="Antminer-S19"></option>
+                <option value="Antminer-S21"></option>
+                <option value="Garage"></option>
+              </datalist>
+            </label>
+            <div class="setup-generated-row">
+              <code id="setup-generated-username">-</code>
+              <button class="copy-button canary-copy-button" type="button" data-copy-target="setup-generated-username" aria-label="Copy generated username" title="Copy" disabled>
+                <img src="/icons/copy.svg" alt="">
+              </button>
+            </div>
+            <p>Copy this value into the miner username or user identity field. Leave the label blank to use only the payout address; add a label when you want dashboards or logs to show the miner type, location, or a specific device name.</p>
+          </div>
+          <div class="setup-field">
+            <span>Password</span>
+            <p>Leave this empty; this server does not use password authentication.</p>
+          </div>
+          <div class="setup-field">
+            <span>SV2 Authority Public Key</span>
+            <code id="setup-authority-key">-</code>
+            <button class="copy-button canary-copy-button" type="button" data-copy-target="setup-authority-key" aria-label="Copy SV2 Authority Public Key" title="Copy">
+              <img src="/icons/copy.svg" alt="">
+            </button>
+            <p>Optional Base58-encoded key for server certificate verification.</p>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="/jquery-lite.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+network = "mainnet"
+data_dir = "/app/data/mainnet"
+
+[bitcoin_core]
+# Start9 Bitcoin Core -> Actions -> Runtime Information -> IPC Socket Path.
+# The server strips the Start9 "unix:" prefix before connecting.
+ipc_socket_path = "unix:/root/.bitcoin/ipc/bitcoin-core.sock"
+# Optional RPC overrides. If omitted, RPC defaults to http://127.0.0.1:8332
+# and cookie auth resolves to <data_dir>/.cookie when data_dir is set.
+rpc_url = "http://bitcoind.startos:8332"
+rpc_cookie_path = "/root/.bitcoin/.cookie"
+# Mainnet `createNewBlock` work is expensive on small StartOS machines.
+# Keep mempool-driven template refreshes coarse; chain-tip changes still
+# publish immediately.
+fee_threshold = 100000
+min_interval = 60
+
+[sv2]
+listen_address = "0.0.0.0:3333"
+
+[metrics]
+listen_address = "127.0.0.1:9090"
+cache_refresh_secs = 15
+
+[ui]
+enabled = true
+listen_address = "0.0.0.0:8080"

@@ -1,0 +1,23 @@
+[package]
+name = "bitcoin_core_sv2"
+description = "A library to get Stratum V2 Template Distribution Protocol from Bitcoin Core over IPC"
+version = "0.2.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["The Stratum V2 Developers"]
+homepage = "https://stratumprotocol.org"
+readme = "README.md"
+keywords = ["stratum", "mining", "bitcoin", "bitcoin-core"]
+
+[dependencies]
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+capnp = "0.25.0"
+capnp-rpc = "0.25.0"
+tokio = { version = "1.44.1", features = ["full"] }
+tokio-util = { version = "0.7.10", features = ["codec", "compat"] }
+async-channel = "1.5.1"
+
+stratum-core = { version = "0.3.0" }
+
+bitcoin-capnp-types = "0.2.0"

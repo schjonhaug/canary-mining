@@ -1,0 +1,28 @@
+network = "regtest"
+# Miner payouts are selected by SV2 user_identity, e.g. <address>.worker.
+data_dir = "./data/regtest"
+
+shares_per_minute = 6.0
+share_batch_size = 10
+
+[bitcoin_core]
+# Bitcoin Core IPC socket resolves to <data_dir>/regtest/node.sock.
+# Set this to the Bitcoin Core data directory, not the network subdirectory.
+data_dir = "/tmp/bitcoin-regtest"
+# Optional RPC overrides. If omitted, RPC defaults to http://127.0.0.1:18443
+# and cookie auth resolves to <data_dir>/regtest/.cookie.
+# rpc_url = "http://127.0.0.1:18443"
+# rpc_cookie_path = "/tmp/bitcoin-regtest/regtest/.cookie"
+fee_threshold = 100
+min_interval = 5
+
+[sv2]
+listen_address = "0.0.0.0:3333"
+
+[metrics]
+listen_address = "127.0.0.1:9090"
+cache_refresh_secs = 1
+
+[ui]
+enabled = true
+listen_address = "127.0.0.1:8080"

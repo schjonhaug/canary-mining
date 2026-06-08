@@ -1,0 +1,35 @@
+[package]
+name = "canary-mining"
+version = "1.0.0"
+edition = "2024"
+default-run = "canary-mining"
+
+[dependencies]
+anyhow = "1.0.102"
+async-channel = "1.8.0"
+axum = "0.8.9"
+bitcoin = "0.32.100"
+clap = { version = "4.6.1", features = ["derive"] }
+libc = "0.2.177"
+pool_sv2 = { path = "vendor/pool_sv2", default-features = true }
+rand = "0.8.5"
+regex = "1.12.2"
+reqwest = { version = "0.13.4", default-features = false, features = ["json", "rustls"] }
+rusqlite = { version = "0.40.0", features = ["bundled"] }
+secp256k1 = { version = "0.28.2", default-features = false, features = ["alloc", "rand", "rand-std"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = { version = "1.0.150", features = ["raw_value"] }
+stratum-apps = { git = "https://github.com/stratum-mining/sv2-apps.git", rev = "de60df95245a4a6127cb5ece120d58433cbe823b", version = "0.4.0", features = ["pool"] }
+thiserror = "2.0.18"
+tokio = { version = "1.52.3", features = ["full"] }
+toml = "1.1.2"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+
+[dev-dependencies]
+assert_cmd = "2.2.2"
+predicates = "3.1.4"
+tempfile = "3.27.0"
+
+[patch."https://github.com/stratum-mining/sv2-apps.git"]
+bitcoin_core_sv2 = { path = "vendor/bitcoin-core-sv2" }

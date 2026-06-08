@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/mempool/mining-pools",
+  "file": "pools-v2.json",
+  "branch": "master",
+  "commit": "20a4b2c48f6038ad46c850f6685df93a5fbfe9fc",
+  "fetched_at": "2026-05-19T18:27:25Z",
+  "sha256": "e06afc3ba9d74d6304a60780217aaa005e59afc40b9ef2454ead19034a5bf517"
+}

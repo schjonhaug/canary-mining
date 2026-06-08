@@ -1,0 +1,7 @@
+target/
+data/
+.git/
+.DS_Store
+*.s9pk
+node_modules/
+javascript/

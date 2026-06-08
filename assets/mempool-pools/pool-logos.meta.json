@@ -1,0 +1,257 @@
+{
+  "source": "https://mempool.space/resources/mining-pools",
+  "fetched_at": "2026-05-19T18:27:25Z",
+  "logos": {
+    "ultimuspool": {
+      "name": "ULTIMUSPOOL",
+      "file": "ultimuspool.svg",
+      "sha256": "8bff5c58f6e89e03c3a4c75de7399f7b94ce02cd8a7aa6129940733c502a634f"
+    },
+    "terrapool": {
+      "name": "Terra Pool",
+      "file": "terrapool.svg",
+      "sha256": "d568e6199ab36002baee1cf48856ea9206a5d4b3880b84341e04f9ec0224aef8"
+    },
+    "luxor": {
+      "name": "Luxor",
+      "file": "luxor.svg",
+      "sha256": "00462473f5bd857aeb8c1cc28ad0b649aba3148eebde10bb62ea61a3a5a1cd5c"
+    },
+    "1thash": {
+      "name": "1THash",
+      "file": "1thash.svg",
+      "sha256": "e080eeb7d33cb6ebeb654e08aa2791704a3299bf4a8347873d9fa02aa1d14b31"
+    },
+    "btccom": {
+      "name": "BTC.com",
+      "file": "btccom.svg",
+      "sha256": "ee7b6fffa80f13075be9a3757e4818a76166a1b7d9e4819a331d11a548c8fbbd"
+    },
+    "huobipool": {
+      "name": "Huobi.pool",
+      "file": "huobipool.svg",
+      "sha256": "a7068f36db87e96454fbcbdd1cd9383167debc4fdc28daab133a0a05affeac41"
+    },
+    "wayicn": {
+      "name": "WAYI.CN",
+      "file": "wayicn.svg",
+      "sha256": "e32c7a7f8291a35c23457215c4bba3bd212c80458783a16ce1cf7403fc3b28c4"
+    },
+    "btctop": {
+      "name": "BTC.TOP",
+      "file": "btctop.svg",
+      "sha256": "14a2e10e5636890f537b1b761a416e41f6e3666c9e7659ff839fd38e4d3c5662"
+    },
+    "bitcoincom": {
+      "name": "Bitcoin.com",
+      "file": "bitcoincom.svg",
+      "sha256": "f077440b31fdb1fae85cb9b172881790cfbc6318658b0a9f8f70c28710a0482f"
+    },
+    "f2pool": {
+      "name": "F2Pool",
+      "file": "f2pool.svg",
+      "sha256": "224f0c16f65fbc8fb9d3dd7f89551a4c4feb04123118beade4e021523555044f"
+    },
+    "braiinspool": {
+      "name": "Braiins Pool",
+      "file": "braiinspool.svg",
+      "sha256": "58896c53432f61ccdcc9c819835d8bc93c8fd51292b02761188e25a8a6ddcc86"
+    },
+    "antpool": {
+      "name": "AntPool",
+      "file": "antpool.svg",
+      "sha256": "3db93c732e91234b892660f3bccf6ccfd545635f669848b67ddd8cf2e740fa2d"
+    },
+    "nicehash": {
+      "name": "NiceHash",
+      "file": "nicehash.svg",
+      "sha256": "992357a1e269acf52fad7c044d3b3de090c1cb8e5c087b7429f83351e9fcbb83"
+    },
+    "bitfury": {
+      "name": "BitFury",
+      "file": "bitfury.svg",
+      "sha256": "871629adb638cf2cbd0fe2a949291fac6818683dc1d3ae333e36b71cbe3aca20"
+    },
+    "okexpool": {
+      "name": "OKExPool",
+      "file": "okexpool.svg",
+      "sha256": "9629e64d78e3554ee2b73be72b280f46d32086d23fc68920204cfe962051b8b8"
+    },
+    "viabtc": {
+      "name": "ViaBTC",
+      "file": "viabtc.svg",
+      "sha256": "4e782a4d7cbbd5513a7e3436a80922e8919c235dfd4fc98d2ffda15ae5569340"
+    },
+    "rawpool": {
+      "name": "Rawpool",
+      "file": "rawpool.svg",
+      "sha256": "1d09d9e24c8604d863d716023f5cefc0117fd61aeaa5b28482a221d84e2434b8"
+    },
+    "poolin": {
+      "name": "Poolin",
+      "file": "poolin.svg",
+      "sha256": "55e3305a15a55fdf027ef4d5edcb98b871795043f16b2799c4576c9a7f1ab23f"
+    },
+    "sigmapoolcom": {
+      "name": "Sigmapool.com",
+      "file": "sigmapoolcom.svg",
+      "sha256": "596028218ed4f07b8a12faa4372cef0900d6ba924a26e5006d55672ccbe81e01"
+    },
+    "spiderpool": {
+      "name": "SpiderPool",
+      "file": "spiderpool.svg",
+      "sha256": "bd4159b7cc3de758f77f617d25cf8353b5cdb1d7adadf775b4498b319297fca0"
+    },
+    "binancepool": {
+      "name": "Binance Pool",
+      "file": "binancepool.svg",
+      "sha256": "3b77cfde267d22989be8e08ac0315181ea4a5341db1dce77bf8f74f2b0c2eb1e"
+    },
+    "minerium": {
+      "name": "Minerium",
+      "file": "minerium.svg",
+      "sha256": "ea7848c098b1d44d629e25f48d4ec4641341497f3cc1b97e72ee56af056ffabb"
+    },
+    "okkong": {
+      "name": "OKKONG",
+      "file": "okkong.svg",
+      "sha256": "ce0fdf017eade0d532dbf098387e27909c8644f047ba86c051442136726902a8"
+    },
+    "emcdpool": {
+      "name": "EMCDPool",
+      "file": "emcdpool.svg",
+      "sha256": "a46e960201a58e645b21a993ef3230d172a9abc252ad13b31746cf0837ad8621"
+    },
+    "foundryusa": {
+      "name": "Foundry USA",
+      "file": "foundryusa.svg",
+      "sha256": "a4bbc5b7f2144b25eaaea0e605eca7020752dd9e795a51237310719ac73cfb5a"
+    },
+    "sbicrypto": {
+      "name": "SBI Crypto",
+      "file": "sbicrypto.svg",
+      "sha256": "e8a05bfe86386e524f6e975434c6c1ffed8a077c770e7d8327241aa5090e73fe"
+    },
+    "arkpool": {
+      "name": "ArkPool",
+      "file": "arkpool.svg",
+      "sha256": "1ee51347aec3c95398d15798423bf5149a2bd824b056e4f1392340d8a008e17c"
+    },
+    "marapool": {
+      "name": "MARA Pool",
+      "file": "marapool.svg",
+      "sha256": "d63b4b5a36ddf6a263f1937afb5942fd6cd1be05a92ecf8238067a59209834de"
+    },
+    "kucoinpool": {
+      "name": "KuCoinPool",
+      "file": "kucoinpool.svg",
+      "sha256": "57cb72b48ec9c95fe82da22d6f68c1ec7aaf86f1c970b059323a943a4db32e0b"
+    },
+    "titan": {
+      "name": "Titan",
+      "file": "titan.svg",
+      "sha256": "6593c544f6ce3d9ae11bf309a466ffd0890f4d23e4ff9ff79e1e8a05632e9498"
+    },
+    "pegapool": {
+      "name": "PEGA Pool",
+      "file": "pegapool.svg",
+      "sha256": "8bae545ec2e48ef51c79da0f25737ca6269d45f6c6365b40d6149cde4acce919"
+    },
+    "secpool": {
+      "name": "SECPOOL",
+      "file": "secpool.svg",
+      "sha256": "2c3fa8dd68eea8e2a8860075b6df1f20ca6aed14414c1361333101159d61d105"
+    },
+    "ocean": {
+      "name": "OCEAN",
+      "file": "ocean.svg",
+      "sha256": "83bf6a7da43540e751d293de30d5985a9578a83773eb87cc60d2ebb4a8f2edd1"
+    },
+    "whitepool": {
+      "name": "WhitePool",
+      "file": "whitepool.svg",
+      "sha256": "3c7af52ec08adda7a6df1a86503a3e9ade4c451059894f5c5f79dada4519c9da"
+    },
+    "wiz": {
+      "name": "wiz",
+      "file": "wiz.svg",
+      "sha256": "b354b6da498dfe46a14112e080728b2b88177f3c2993a3e7d6afd958adc6f2be"
+    },
+    "mononaut": {
+      "name": "mononaut",
+      "file": "mononaut.svg",
+      "sha256": "d232d246a2ad5d154722bb08587a370cd670f8c686f7e2a5239dfb131978edc1"
+    },
+    "phoenix": {
+      "name": "Phoenix",
+      "file": "phoenix.svg",
+      "sha256": "24c09776684dd1b3d8ce1e8be85e1dae5b0f46252d8129ef4857939f47bf5612"
+    },
+    "neopool": {
+      "name": "Neopool",
+      "file": "neopool.svg",
+      "sha256": "fa3a3b5a951237c33d8b8bec90d2fd75f9e98298446b60fd1e07ecdeba99daef"
+    },
+    "maxipool": {
+      "name": "MaxiPool",
+      "file": "maxipool.svg",
+      "sha256": "dfb207f2c2dc256a91c022b54ba3d91e6ad21871d4411c02c0b5647939243496"
+    },
+    "bitfufupool": {
+      "name": "BitFuFuPool",
+      "file": "bitfufupool.svg",
+      "sha256": "66af8e7d28195e2b13006ad5bcbe45c799cf77f10d5afde67b1e910e96cf3235"
+    },
+    "gdpool": {
+      "name": "GDPool",
+      "file": "gdpool.svg",
+      "sha256": "a838373dcc585e4f57c6d9083b04a81423f7258c6f1856d4095595d0f9f463fd"
+    },
+    "publicpool": {
+      "name": "Public Pool",
+      "file": "publicpool.svg",
+      "sha256": "c3ba5ba345d5ad68f93b6068f1febf33fe7a9ea98e2b2774899a3d4a466c0717"
+    },
+    "miningsquared": {
+      "name": "Mining Squared",
+      "file": "miningsquared.svg",
+      "sha256": "f330754a699107a05f51e25f869289264616985db847f22b140002ce5753634f"
+    },
+    "innopolistech": {
+      "name": "Innopolis Tech",
+      "file": "innopolistech.svg",
+      "sha256": "e1ff1e4bd59a89d1b2d0f677b8f9e5bf3867d71143061fdd8816f0abc5e15c23"
+    },
+    "btclab": {
+      "name": "BTCLab",
+      "file": "btclab.svg",
+      "sha256": "ab013d409320d5edb9b54ba6f644df61eb7c85a237d0b09c1c3e7cdf435dd8c8"
+    },
+    "parasite": {
+      "name": "Parasite",
+      "file": "parasite.svg",
+      "sha256": "bda407afcc4a4aa8af7d85e2b5d60404ea49eac7da4ca72d2ae46fe980f53b43"
+    },
+    "est3lar": {
+      "name": "Est3lar",
+      "file": "est3lar.svg",
+      "sha256": "4371d83d570bf0a54c339bd1545ce0b615c0fb5cafff6c70cbb75f475daf0a9b"
+    },
+    "braiinssolo": {
+      "name": "Braiins Solo",
+      "file": "braiinssolo.svg",
+      "sha256": "14e24fac82b3ae6107bfa7285d78cab71bb959e68e1f01dd0d3eb49c5b68295e"
+    },
+    "solopoolcom": {
+      "name": "SoloPool.com",
+      "file": "solopoolcom.svg",
+      "sha256": "7edf1cc0245503082bca2d9a9882451e3c1fa651a4a219d0c10b8ad920cb09fb"
+    },
+    "noderunners": {
+      "name": "Noderunners",
+      "file": "noderunners.svg",
+      "sha256": "6e0e67d16c950a5be38912d612e0f741153fcb4fa888ad128954198fff954c04"
+    }
+  },
+  "count": 50
+}

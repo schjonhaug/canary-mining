@@ -1,0 +1,18 @@
+network = "signet"
+# Miner payouts are selected by SV2 user_identity, e.g. <address>.worker.
+data_dir = "./data/signet"
+
+[bitcoin_core]
+# Optional RPC overrides. If omitted, RPC defaults to http://127.0.0.1:38332
+# and cookie auth resolves to <data_dir>/signet/.cookie when data_dir is set.
+# rpc_url = "http://127.0.0.1:38332"
+# rpc_cookie_path = "/home/start9/.bitcoin/signet/.cookie"
+fee_threshold = 100000
+min_interval = 60
+
+[sv2]
+listen_address = "0.0.0.0:3333"
+
+[metrics]
+listen_address = "127.0.0.1:9090"
+cache_refresh_secs = 15

@@ -1,0 +1,6 @@
+/target
+/.DS_Store
+/canary-sv2-solo.toml
+/authority-keys.toml
+/data
+/dev/regtest/generated

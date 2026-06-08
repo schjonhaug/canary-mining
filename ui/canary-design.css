@@ -1,0 +1,516 @@
+/* Canary Design bundle.
+   Source: https://github.com/schjonhaug/canary-design commit 2ebf118.
+   Generated from src/fonts.css + src/tokens.css + src/primitives.css. */
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Fallback";
+  src: local("Arial");
+  ascent-override: 95.94%;
+  descent-override: 28.16%;
+  line-gap-override: 0%;
+  size-adjust: 104.76%;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-mono-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-mono-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist/geist-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Mono Fallback";
+  src: local("Arial");
+  ascent-override: 74.67%;
+  descent-override: 21.92%;
+  line-gap-override: 0%;
+  size-adjust: 134.59%;
+}
+
+:root {
+  color-scheme: light;
+
+  --canary-radius: 0.625rem;
+  --canary-radius-sm: 0.375rem;
+  --canary-radius-md: 0.5rem;
+  --canary-radius-lg: 0.625rem;
+  --canary-radius-xl: 0.875rem;
+  --canary-radius-pill: 999px;
+
+  --font-geist-sans: "Geist", "Geist Fallback";
+  --font-geist-mono: "Geist Mono", "Geist Mono Fallback";
+  --canary-font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --canary-font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  --canary-background: #fafafa;
+  --canary-foreground: #161812;
+  --canary-card: #ffffff;
+  --canary-card-foreground: #161812;
+  --canary-popover: #ffffff;
+  --canary-popover-foreground: #161812;
+  --canary-primary: #161812;
+  --canary-primary-foreground: #ffffff;
+  --canary-secondary: #f4f4f5;
+  --canary-secondary-foreground: #161812;
+  --canary-muted: #f1f5f9;
+  --canary-muted-foreground: #64748b;
+  --canary-accent: #73C2DE;
+  --canary-accent-foreground: #161812;
+  --canary-destructive: #ef4444;
+  --canary-border: #e2e8f0;
+  --canary-input: #e2e8f0;
+  --canary-ring: #73C2DE;
+
+  --canary-success: #176529;
+  --canary-success-background: #edf7ef;
+  --canary-success-border: #b8dfc0;
+  --canary-warning: #8a5400;
+  --canary-warning-background: #fff4e5;
+  --canary-warning-border: #f0c36d;
+  --canary-danger: #a33522;
+  --canary-danger-background: #fff0f0;
+  --canary-danger-border: #efb3b3;
+  --canary-info: #1f4f9f;
+  --canary-info-background: #eef4ff;
+  --canary-info-border: #b8c8f2;
+
+  --canary-shadow-sm: 0 1px 2px rgba(22, 24, 18, 0.06);
+  --canary-shadow-md: 0 8px 24px rgba(22, 24, 18, 0.08);
+  --canary-shadow-lg: 0 24px 70px rgba(22, 24, 18, 0.24);
+
+  --canary-chart-1: #73C2DE;
+  --canary-chart-2: #F6C919;
+  --canary-chart-3: #161812;
+  --canary-chart-4: #94a3b8;
+  --canary-chart-5: #cbd5e1;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --canary-background: #161812;
+  --canary-foreground: #ffffff;
+  --canary-card: #1f2123;
+  --canary-card-foreground: #ffffff;
+  --canary-popover: #1f2123;
+  --canary-popover-foreground: #ffffff;
+  --canary-primary: #73C2DE;
+  --canary-primary-foreground: #161812;
+  --canary-secondary: #2a2c2f;
+  --canary-secondary-foreground: #ffffff;
+  --canary-muted: #2a2c2f;
+  --canary-muted-foreground: #94a3b8;
+  --canary-accent: #73C2DE;
+  --canary-accent-foreground: #161812;
+  --canary-destructive: #ef4444;
+  --canary-border: #374151;
+  --canary-input: #374151;
+  --canary-ring: #73C2DE;
+
+  --canary-chart-1: #73C2DE;
+  --canary-chart-2: #F6C919;
+  --canary-chart-3: #ffffff;
+  --canary-chart-4: #94a3b8;
+  --canary-chart-5: #6b7280;
+}
+
+.canary-app {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background: var(--canary-background);
+  color: var(--canary-foreground);
+  font-family: var(--canary-font-sans);
+}
+
+.canary-card {
+  background: var(--canary-card);
+  border: 1px solid var(--canary-border);
+  border-radius: var(--canary-radius-md);
+  color: var(--canary-card-foreground);
+  min-width: 0;
+}
+
+.canary-panel {
+  background: var(--canary-card);
+  border: 1px solid var(--canary-border);
+  border-radius: var(--canary-radius-md);
+  color: var(--canary-card-foreground);
+  min-width: 0;
+}
+
+.canary-metric-card {
+  background: var(--canary-card);
+  border: 1px solid var(--canary-border);
+  border-radius: var(--canary-radius-md);
+  color: var(--canary-card-foreground);
+  min-width: 0;
+  padding: 1rem;
+}
+
+.canary-metric-label {
+  align-items: center;
+  color: var(--canary-muted-foreground);
+  display: flex;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  gap: 0.375rem;
+  text-transform: uppercase;
+}
+
+.canary-metric-value {
+  color: var(--canary-foreground);
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.canary-button {
+  align-items: center;
+  background: var(--canary-primary);
+  border: 1px solid var(--canary-primary);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-primary-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.875rem;
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+
+.canary-button:hover {
+  background: color-mix(in srgb, var(--canary-primary) 90%, transparent);
+}
+
+.canary-button:focus-visible,
+.canary-icon-button:focus-visible,
+.canary-input:focus-visible,
+.canary-select:focus-visible {
+  border-color: var(--canary-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--canary-ring) 28%, transparent);
+  outline: none;
+}
+
+.canary-button-secondary {
+  background: var(--canary-secondary);
+  border-color: var(--canary-secondary);
+  color: var(--canary-secondary-foreground);
+}
+
+.canary-button-outline {
+  background: var(--canary-background);
+  border-color: var(--canary-border);
+  color: var(--canary-foreground);
+}
+
+.canary-icon-button,
+.canary-copy-button {
+  align-items: center;
+  background: var(--canary-card);
+  border: 1px solid var(--canary-input);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-muted-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  height: 2.125rem;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+  width: 2.125rem;
+}
+
+.canary-icon-button:hover,
+.canary-copy-button:hover {
+  background: var(--canary-secondary);
+  color: var(--canary-foreground);
+}
+
+.canary-copy-button.is-copied {
+  background: var(--canary-secondary);
+  border-color: var(--canary-border);
+  color: var(--canary-foreground);
+}
+
+.canary-copy-button:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.canary-badge {
+  align-items: center;
+  border: 1px solid var(--canary-border);
+  border-radius: var(--canary-radius-pill);
+  display: inline-flex;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  gap: 0.375rem;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+}
+
+.canary-badge-success {
+  background: var(--canary-success-background);
+  border-color: var(--canary-success-border);
+  color: var(--canary-success);
+}
+
+.canary-badge-info {
+  background: var(--canary-info-background);
+  border-color: var(--canary-info-border);
+  color: var(--canary-info);
+}
+
+.canary-badge-warning {
+  background: var(--canary-warning-background);
+  border-color: var(--canary-warning-border);
+  color: var(--canary-warning);
+}
+
+.canary-badge-danger {
+  background: var(--canary-danger-background);
+  border-color: var(--canary-danger-border);
+  color: var(--canary-danger);
+}
+
+.canary-status {
+  align-items: center;
+  background: var(--canary-secondary);
+  border: 1px solid var(--canary-border);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-muted-foreground);
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  max-width: 100%;
+  padding: 0.375rem 0.5rem;
+}
+
+.canary-status-success {
+  background: var(--canary-success-background);
+  border-color: var(--canary-success-border);
+  color: var(--canary-success);
+}
+
+.canary-status-warning {
+  background: var(--canary-warning-background);
+  border-color: var(--canary-warning-border);
+  color: var(--canary-warning);
+}
+
+.canary-status-danger {
+  background: var(--canary-danger-background);
+  border-color: var(--canary-danger-border);
+  color: var(--canary-danger);
+}
+
+.canary-status-info {
+  background: var(--canary-info-background);
+  border-color: var(--canary-info-border);
+  color: var(--canary-info);
+}
+
+.canary-input,
+.canary-select {
+  background: var(--canary-card);
+  border: 1px solid var(--canary-input);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-foreground);
+  font: inherit;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.canary-muted {
+  color: var(--canary-muted-foreground);
+}
+
+.canary-mono {
+  font-family: var(--canary-font-mono);
+}
+
+.canary-tooltip {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--canary-muted-foreground);
+  cursor: help;
+  display: inline-flex;
+  height: 1.125rem;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  width: 1.125rem;
+}
+
+.canary-tooltip:focus-visible {
+  border-radius: var(--canary-radius-pill);
+  outline: 2px solid var(--canary-ring);
+  outline-offset: 2px;
+}
+
+.canary-tooltip::after {
+  background: var(--canary-foreground);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-background);
+  content: attr(data-tooltip);
+  font-size: 0.75rem;
+  font-weight: 500;
+  left: 50%;
+  line-height: 1.35;
+  opacity: 0;
+  padding: 0.5rem 0.625rem;
+  pointer-events: none;
+  position: absolute;
+  text-align: left;
+  top: calc(100% + 0.5rem);
+  transform: translateX(-50%) translateY(0.25rem);
+  transition: opacity 120ms ease, transform 120ms ease;
+  visibility: hidden;
+  width: min(16.25rem, 70vw);
+  z-index: 20;
+}
+
+.canary-tooltip::before {
+  border-bottom: 5px solid var(--canary-foreground);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  content: "";
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 0.1875rem);
+  transform: translateX(-50%) translateY(0.25rem);
+  transition: opacity 120ms ease, transform 120ms ease;
+  visibility: hidden;
+  z-index: 21;
+}
+
+.canary-tooltip:hover::after,
+.canary-tooltip:hover::before,
+.canary-tooltip:focus-visible::after,
+.canary-tooltip:focus-visible::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+}
+
+.canary-dialog {
+  background: transparent;
+  border: 0;
+  border-radius: var(--canary-radius-lg);
+  box-shadow: var(--canary-shadow-lg);
+  color: var(--canary-foreground);
+  margin: auto;
+  max-height: calc(100vh - 1.5rem);
+  max-width: calc(100vw - 1.5rem);
+  overflow: hidden;
+  padding: 0;
+  width: min(40rem, calc(100vw - 1.5rem));
+}
+
+.canary-dialog::backdrop {
+  background: rgba(22, 24, 18, 0.48);
+}
+
+.canary-dialog-panel {
+  background: var(--canary-background);
+  display: grid;
+  max-height: calc(100vh - 1.5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.canary-dialog-header {
+  align-items: start;
+  border-bottom: 1px solid var(--canary-border);
+  display: grid;
+  gap: 0.875rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 1rem;
+}
+
+.canary-dialog-title {
+  color: var(--canary-foreground);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.canary-dialog-description {
+  color: var(--canary-muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+.canary-dialog-body {
+  display: grid;
+}
+
+.canary-dialog-footer {
+  align-items: center;
+  border-top: 1px solid var(--canary-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding: 1rem;
+}

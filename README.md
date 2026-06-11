@@ -13,6 +13,8 @@ It accepts native Stratum V2 miner connections, receives block templates from
 Bitcoin Core over IPC, submits solved blocks back through Bitcoin Core, and
 serves a small local dashboard for operators.
 
+![Canary Mining dashboard](screenshots/dashboard.png)
+
 Canary Mining is not a public pool, payout service, hosted mining platform, or
 SV1 translator. There are no accounts, balances, pooled payouts, withdrawals,
 or custody flows. If a miner finds a block, the reward goes directly to the
@@ -186,6 +188,29 @@ native_sv2_test_miner_accepted_blocks=1
 ```
 
 The full local harness is documented in `dev/regtest/README.md`.
+
+## Release Screenshot
+
+Capture the dashboard image used in this README and app-store submissions from
+a running local dashboard:
+
+```bash
+scripts/update-readme-screenshot.sh
+```
+
+The default output is `screenshots/dashboard.png` at 1440px wide with the full
+dashboard height included. Override the URL, output path, or viewport through
+environment variables when preparing release assets:
+
+```bash
+CANARY_MINING_DASHBOARD_URL=http://127.0.0.1:8080 \
+CANARY_MINING_README_SCREENSHOT=screenshots/dashboard.png \
+CANARY_MINING_SCREENSHOT_MODE=screenshot \
+CANARY_MINING_SCREENSHOT_WIDTH=1440 \
+CANARY_MINING_SCREENSHOT_HEIGHT=900 \
+CANARY_MINING_SCREENSHOT_MINERS=2 \
+scripts/update-readme-screenshot.sh
+```
 
 ## Project Boundary
 

@@ -9,7 +9,9 @@ let selectedCurrency =
 let chainTimelineResizeObserver = null;
 let chainTimelineObservedElement = null;
 const expandedMinerWorkers = new Set();
-const debugMode = new URLSearchParams(window.location.search).has("debug");
+const searchParams = new URLSearchParams(window.location.search);
+const debugMode = searchParams.has("debug");
+const debugMinerCount = Math.max(0, Number.parseInt(searchParams.get("debug-miners") || "", 10) || 0);
 let payoutAddressValidationRequest = 0;
 let serverClockOffsetSeconds = 0;
 let payoutAddressLabelTimer = 0;
@@ -238,7 +240,11 @@ function debugActiveMiners(network) {
     ["generic", "unknown.worker", "unknown worker", 520_000_000_000],
   ];
 
-  return debugMiners.map(([id, label, term, hashrate], index) => ({
+  const visibleDebugMiners = debugMinerCount > 0
+    ? debugMiners.slice(0, debugMinerCount)
+    : debugMiners;
+
+  return visibleDebugMiners.map(([id, label, term, hashrate], index) => ({
     worker_id: `debug-${id}`,
     label,
     user_identity: `bcrt1q2nfxmhd4n3c8834pj72xagvyr9gl57n5r94fsl.${term}`,

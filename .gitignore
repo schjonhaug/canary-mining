@@ -4,3 +4,4 @@
 /authority-keys.toml
 /data
 /dev/regtest/generated
+/scripts/playwright/node_modules

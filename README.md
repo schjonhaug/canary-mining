@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="ui/canary-in-a-coalmine.svg" alt="Canary Mining" width="96">
+</p>
+
 # Canary Mining
 
 Self-hosted native Stratum V2 solo mining server for Bitcoin Core IPC.

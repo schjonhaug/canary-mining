@@ -17,7 +17,7 @@
             <p id="subtitle">Stratum V2 solo mining server</p>
           </div>
         </div>
-        <div class="topbar-controls">
+        <div class="topbar-controls" id="topbar-controls">
           <button class="panel-action canary-button top-add-miner" id="top-add-miner" type="button" data-open-add-miner hidden>+ Add Miner</button>
           <label class="currency-control" for="currency-select">
             <span>Currency</span>
@@ -31,6 +31,23 @@
     </header>
 
     <main>
+      <section class="setup-panel canary-panel" id="setup-panel" hidden>
+        <div class="panel-title setup-panel-title">
+          <div class="metric-label">
+            <h2>Mining setup required</h2>
+          </div>
+        </div>
+        <div class="setup-panel-body">
+          <p>Bitcoin Core IPC mining is not enabled, so Canary Mining cannot start the dashboard yet.</p>
+          <ol class="setup-steps">
+            <li>Open Bitcoin Node in Umbrel.</li>
+            <li>Enable Bitcoin Core IPC mining.</li>
+            <li>Restart Bitcoin Node, then restart Canary Mining.</li>
+          </ol>
+          <p class="setup-path">Expected IPC socket: <code>/root/.bitcoin/node.sock</code></p>
+        </div>
+      </section>
+
       <section class="metrics-grid">
         <article class="network-card canary-metric-card">
           <div class="metric-label">

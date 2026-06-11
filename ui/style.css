@@ -213,6 +213,48 @@ main {
   padding: 16px;
 }
 
+.setup-panel {
+  display: grid;
+  gap: 0;
+}
+
+.setup-panel-title {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.setup-panel-body {
+  color: var(--canary-foreground);
+  display: grid;
+  gap: 12px;
+  padding: 0 16px 18px;
+}
+
+.setup-panel-body p {
+  color: var(--canary-muted-foreground);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.setup-steps {
+  color: var(--canary-foreground);
+  margin: 0;
+  padding-left: 20px;
+}
+
+.setup-steps li + li {
+  margin-top: 8px;
+}
+
+.setup-path code {
+  background: var(--canary-secondary-background);
+  border-radius: var(--canary-radius-sm);
+  color: var(--canary-foreground);
+  display: inline-block;
+  font-size: 13px;
+  padding: 2px 6px;
+}
+
 .network-card {
   grid-column: span 2;
 }

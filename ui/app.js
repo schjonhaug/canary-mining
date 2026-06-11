@@ -34,6 +34,23 @@ function updateMonitoringVisibility(network) {
   return visible;
 }
 
+function updateSetupVisibility(status) {
+  const setupRequired = Boolean(status?.mining?.setup_required);
+  const setupPanel = document.getElementById("setup-panel");
+  const controls = document.getElementById("topbar-controls");
+  const metricsGrid = document.querySelector(".metrics-grid");
+  const columns = document.querySelector(".columns");
+  const monitoring = document.querySelector(".monitoring-bottom");
+
+  if (setupPanel) setupPanel.hidden = !setupRequired;
+  if (controls) controls.hidden = setupRequired;
+  if (metricsGrid) metricsGrid.hidden = setupRequired;
+  if (columns) columns.hidden = setupRequired;
+  if (monitoring) monitoring.hidden = setupRequired || monitoring.hidden;
+
+  return setupRequired;
+}
+
 function formatTime(epochSeconds) {
   if (!epochSeconds) return "-";
   const timestamp = new Date(epochSeconds * 1000);
@@ -546,6 +563,9 @@ function miningUnavailableStatus(mining) {
 }
 
 function chainCardStatus(bitcoinCore, mining) {
+  if (mining?.setup_required) {
+    return cardStatus("info", mining.warning || "Bitcoin Core IPC mining is not enabled.");
+  }
   if (!bitcoinCore.rpc_available) {
     return bitcoinCore.template?.height
       ? cardStatus("warn", "Bitcoin Core RPC unavailable; showing cached chain data and live IPC template.")
@@ -1027,6 +1047,7 @@ async function refreshStatus() {
   lastStatus = status;
   currentNetwork = status.config.network || "mainnet";
   const showMonitoring = updateMonitoringVisibility(currentNetwork);
+  const setupRequired = updateSetupVisibility(status);
   updateTitle(currentNetwork);
   updateMinerSetup(status);
   const bitcoinCore = status.bitcoin_core || {};
@@ -1042,7 +1063,7 @@ async function refreshStatus() {
   updateTemplateAvailability(bitcoinCore, template);
   updateChainTimeline(bitcoinCore, template, status.recent_blocks || [], minerWorkers);
   updateTemplateMetrics(template);
-  if (showMonitoring) {
+  if (showMonitoring && !setupRequired) {
     $("#metrics-listener").text(status.config.metrics_listen_address || "disabled");
     $("#monitoring").text(JSON.stringify(status.monitoring || {}, null, 2));
   }

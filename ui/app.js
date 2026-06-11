@@ -498,6 +498,10 @@ function clearHealth() {
 
 function updateHealth(status, bitcoinCore) {
   const mining = status.mining || {};
+  if (mining.setup_required) {
+    setHealth("warn", "Mining setup required");
+    return;
+  }
   if (!bitcoinCore.rpc_available) {
     if (bitcoinCore.template?.height) {
       setHealth("warn", "Bitcoin Core RPC warning");
@@ -527,6 +531,9 @@ function cardStatus(kind, text) {
 
 function miningUnavailableStatus(mining) {
   if (!mining) return null;
+  if (mining.setup_required) {
+    return cardStatus("warn", mining.warning || "Bitcoin Core IPC mining is not enabled.");
+  }
   const message = mining.error || mining.warning;
   if (message) return cardStatus("warn", message);
   if (!mining.sv2_listening) return cardStatus("warn", "SV2 mining server is not listening.");
@@ -550,6 +557,8 @@ function chainCardStatus(bitcoinCore, mining) {
 }
 
 function templateCardStatus(bitcoinCore, template, mining) {
+  const miningStatus = miningUnavailableStatus(mining);
+  if (miningStatus) return miningStatus;
   if (!bitcoinCore.rpc_available) {
     return template?.height
       ? cardStatus("warn", `Candidate block ${formatInteger(template.height)} available from IPC; Bitcoin Core RPC status is unavailable.`)
@@ -557,8 +566,6 @@ function templateCardStatus(bitcoinCore, template, mining) {
   }
   if (bitcoinCore.initial_block_download) return cardStatus("warn", "Template paused while the node is in initial block download.");
   if (!template?.height) return cardStatus("warn", "No IPC candidate template available; template refresh is idle or still bootstrapping.");
-  const miningStatus = miningUnavailableStatus(mining);
-  if (miningStatus) return cardStatus("warn", `IPC template available, but ${miningStatus.text}`);
   if (!bitcoinCore.mining_ready) return cardStatus("warn", "Template unavailable; mining is paused.");
   return cardStatus("ok", `Candidate block ${formatInteger(template.height)} ready.`);
 }

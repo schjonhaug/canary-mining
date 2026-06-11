@@ -2,6 +2,7 @@ use std::{
     collections::HashMap,
     future::Future,
     net::SocketAddr,
+    path::PathBuf,
     sync::{Arc, LazyLock},
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -184,10 +185,13 @@ struct HealthResponse {
 struct MiningStatusResponse {
     sv2_listening: bool,
     template_provider_available: bool,
+    setup_required: bool,
     ipc_socket_path: Option<String>,
     warning: Option<String>,
     error: Option<String>,
 }
+
+const IPC_SETUP_REQUIRED_MESSAGE: &str = "Bitcoin Core IPC mining is not enabled. Enable Bitcoin Core IPC in Bitcoin Node settings, restart Bitcoin Node, then restart Canary Mining.";
 
 #[derive(Deserialize)]
 struct ValidatePayoutAddressQuery {
@@ -682,7 +686,7 @@ async fn api_health(State(state): State<UiState>) -> Json<HealthResponse> {
     let warning = if ipc_socket_available {
         None
     } else {
-        Some("Bitcoin Core IPC socket is unavailable.".to_owned())
+        Some(IPC_SETUP_REQUIRED_MESSAGE.to_owned())
     };
     let ready =
         sv2_listening && ipc_socket_available && template_available && runtime.pool_error.is_none();
@@ -701,21 +705,30 @@ async fn api_health(State(state): State<UiState>) -> Json<HealthResponse> {
 async fn mining_status_response(state: &UiState) -> MiningStatusResponse {
     let runtime = state.mining_status.runtime.read().await.clone();
     let ipc_socket_path = resolve_ipc_socket_path(&state.app_config);
-    let warning = match ipc_socket_path.as_ref() {
-        Some(path) if path.exists() => None,
-        Some(path) => Some(format!(
-            "Bitcoin Core IPC socket not found at {}. SV2 mining is unavailable, but RPC-backed UI data can still load.",
-            path.display()
-        )),
-        None => Some(
-            "Bitcoin Core IPC socket could not be resolved. SV2 mining is unavailable, but RPC-backed UI data can still load."
-                .to_owned(),
-        ),
-    };
+    mining_status_from_parts(runtime, ipc_socket_path)
+}
+
+fn mining_status_from_parts(
+    runtime: MiningRuntimeStatus,
+    ipc_socket_path: Option<PathBuf>,
+) -> MiningStatusResponse {
+    let ipc_socket_available = ipc_socket_path.as_ref().is_some_and(|path| path.exists());
+    let setup_required = !ipc_socket_available;
+    let warning = setup_required.then(|| {
+        if let Some(path) = ipc_socket_path.as_ref() {
+            format!(
+                "{IPC_SETUP_REQUIRED_MESSAGE} Expected IPC socket: {}.",
+                path.display()
+            )
+        } else {
+            IPC_SETUP_REQUIRED_MESSAGE.to_owned()
+        }
+    });
 
     MiningStatusResponse {
-        sv2_listening: runtime.pool_started && runtime.pool_error.is_none() && warning.is_none(),
-        template_provider_available: warning.is_none(),
+        sv2_listening: runtime.pool_started && runtime.pool_error.is_none() && !setup_required,
+        template_provider_available: ipc_socket_available,
+        setup_required,
         ipc_socket_path: ipc_socket_path.map(|path| path.display().to_string()),
         warning,
         error: runtime.pool_error,
@@ -2086,6 +2099,42 @@ mod tests {
         let runtime = TemplateRuntimeStatus::default();
 
         assert!(runtime.snapshot().is_none());
+    }
+
+    #[test]
+    fn missing_ipc_socket_surfaces_setup_required_status() {
+        let path = std::env::temp_dir().join(format!("canary-mining-missing-ipc-{}", unix_now()));
+        let status = mining_status_from_parts(MiningRuntimeStatus::default(), Some(path.clone()));
+
+        assert!(!status.sv2_listening);
+        assert!(!status.template_provider_available);
+        assert!(status.setup_required);
+        assert_eq!(status.ipc_socket_path, Some(path.display().to_string()));
+        let warning = status.warning.expect("missing IPC warning");
+        assert!(warning.contains("Bitcoin Core IPC mining is not enabled"));
+        assert!(warning.contains(&path.display().to_string()));
+        assert!(status.error.is_none());
+    }
+
+    #[test]
+    fn available_ipc_socket_allows_mining_status_to_listen() {
+        let path = std::env::temp_dir().join(format!("canary-mining-present-ipc-{}", unix_now()));
+        std::fs::write(&path, b"socket placeholder").expect("write placeholder");
+
+        let runtime = MiningRuntimeStatus {
+            pool_started: true,
+            pool_error: None,
+        };
+        let status = mining_status_from_parts(runtime, Some(path.clone()));
+
+        assert!(status.sv2_listening);
+        assert!(status.template_provider_available);
+        assert!(!status.setup_required);
+        assert_eq!(status.ipc_socket_path, Some(path.display().to_string()));
+        assert!(status.warning.is_none());
+        assert!(status.error.is_none());
+
+        std::fs::remove_file(path).expect("remove placeholder");
     }
 
     #[test]

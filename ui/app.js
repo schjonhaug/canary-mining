@@ -470,6 +470,11 @@ function setHealth(state, text) {
       borderColor: "#b8dfc0",
       color: "#176529",
     },
+    info: {
+      background: "#eef4ff",
+      borderColor: "#b8c8f2",
+      color: "#1f4f9f",
+    },
     warn: {
       background: "#fff4e5",
       borderColor: "#f0c36d",
@@ -499,7 +504,7 @@ function clearHealth() {
 function updateHealth(status, bitcoinCore) {
   const mining = status.mining || {};
   if (mining.setup_required) {
-    setHealth("warn", "Mining setup required");
+    setHealth("info", "Mining setup required");
     return;
   }
   if (!bitcoinCore.rpc_available) {
@@ -532,7 +537,7 @@ function cardStatus(kind, text) {
 function miningUnavailableStatus(mining) {
   if (!mining) return null;
   if (mining.setup_required) {
-    return cardStatus("warn", mining.warning || "Bitcoin Core IPC mining is not enabled.");
+    return null;
   }
   const message = mining.error || mining.warning;
   if (message) return cardStatus("warn", message);
@@ -557,6 +562,7 @@ function chainCardStatus(bitcoinCore, mining) {
 }
 
 function templateCardStatus(bitcoinCore, template, mining) {
+  if (mining?.setup_required) return null;
   const miningStatus = miningUnavailableStatus(mining);
   if (miningStatus) return miningStatus;
   if (!bitcoinCore.rpc_available) {
@@ -573,6 +579,12 @@ function templateCardStatus(bitcoinCore, template, mining) {
 function updateCardStatus(id, status) {
   const element = document.getElementById(id);
   if (!element) return;
+  if (!status) {
+    element.textContent = "";
+    element.className = "card-status canary-status";
+    element.hidden = true;
+    return;
+  }
   element.textContent = status.text;
   element.className = `card-status is-${status.kind}`;
   element.hidden = status.kind === "ok";

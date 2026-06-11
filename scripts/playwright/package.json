@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Isolated Playwright tooling for Canary Mining release screenshots",
   "scripts": {
-    "screenshot:readme": "node readme-screenshot.mjs"
+    "screenshot:readme": "node readme-screenshot.mjs",
+    "gallery:umbrel": "node umbrel-gallery.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1"

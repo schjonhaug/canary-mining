@@ -202,9 +202,17 @@ a running local dashboard:
 scripts/update-readme-screenshot.sh
 ```
 
+Generate Umbrel gallery images from the README screenshot:
+
+```bash
+scripts/update-umbrel-gallery.sh
+```
+
 The default output is `screenshots/dashboard.png` at 1440px wide with the full
-dashboard height included. Override the URL, output path, or viewport through
-environment variables when preparing release assets:
+dashboard height included. The default Umbrel gallery output is
+`screenshots/umbrel/` with three `1440x900` PNG images. Override the URL,
+output path, or viewport through environment variables when preparing release
+assets:
 
 ```bash
 CANARY_MINING_DASHBOARD_URL=http://127.0.0.1:8080 \
